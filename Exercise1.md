@@ -40,7 +40,8 @@ The blue point represents the 40 year old, and the green point
 represents the 60 year old. As seen, the difference between the 40 year
 old’s creatinine clearance and the predicted clearance for 40 year olds
 is much higher than the difference between the 60 year old’s creatinine
-clearance and the predicted clearance for 60 year olds.
+clearance and the predicted clearance for 60 year olds. Thus, the 40
+year old is much healthier relative to his age.
 
 ## Green Buildings:
 
