@@ -70,14 +70,124 @@ The blue point represents the 40 year old, and the green point represents the 60
 ## Green Buildings:
 
 ```{r, greenbuildings, echo=FALSE}
-greenbuildings$rentAboveAverage = greenbuildingsrent - greenbuildings$cluster.rent
-above_summ = greenbuildings %>%
-  group_by(green.rating)  %>%  # group the data points by model name
+greenbuildings$rentAboveAverage = greenbuildings$Rent - greenbuildings$cluster_rent
+gb = subset(greenbuildings, stories == 1)
+above_summ = gb %>%
+  group_by(green_rating)  %>%  # group the data points by model name
   summarize(above.mean = mean(rentAboveAverage))  # calculate a mean for each model
 
-ggplot(security_summ, aes(x=green.rating, y=above.mean)) + 
-  geom_point(stat='identity')
+ggplot(above_summ, aes(x=green_rating, y=above.mean)) + 
+  geom_bar(stat='identity')
 ```
+
+```{r, greenbuildings2, echo=FALSE}
+greenbuildings$rentAboveAverage = greenbuildings$Rent - greenbuildings$cluster_rent
+above_summ = greenbuildings %>%
+  group_by(green_rating)  %>%  # group the data points by model name
+  summarize(above.mean = mean(rentAboveAverage))  # calculate a mean for each model
+
+ggplot(above_summ, aes(x=green_rating, y=above.mean)) + 
+  geom_bar(stat='identity')
+```
+
+```{r, greenbuildings3a, echo=FALSE}
+# gas cost
+gb = subset(greenbuildings, green_rating == 0)
+gb$green_rating[gb$green_rating == 0] <- 'NOT GREEN'
+ggplot(data = gb) + 
+  geom_point(mapping = aes(x = hd_total07, y = Gas_Costs, color = green_rating))
+```
+
+```{r, greenbuildings3b, echo=FALSE}
+# gas cost
+gb = subset(greenbuildings, green_rating == 1)
+gb$green_rating[gb$green_rating == 1] <- 'GREEN'
+
+ggplot(data = gb) + 
+  geom_point(mapping = aes(x = hd_total07, y = Gas_Costs, color = green_rating))
+```
+
+```{r, greenbuildings3, echo=FALSE}
+# gas cost
+gb = greenbuildings
+gb$green_rating[gb$green_rating == 0] <- 'NOT GREEN'
+gb$green_rating[gb$green_rating == 1] <- 'GREEN'
+
+ggplot(data = gb) + 
+  geom_point(mapping = aes(x = hd_total07, y = Gas_Costs, color = green_rating))
+```
+
+
+
+```{r, greenbuildings3f, echo=FALSE}
+# gas cost
+
+
+ggplot(data = greenbuildings) + 
+  geom_point(mapping = aes(x = hd_total07, y = Gas_Costs, color = green_rating))
+```
+
+```{r, greenbuildings4a, echo=FALSE}
+# gas cost
+gb = subset(greenbuildings, green_rating == 0)
+ggplot(data = gb) + 
+  geom_point(mapping = aes(x = cd_total_07, y = Electricity_Costs, color = green_rating))
+```
+
+
+
+```{r, greenbuildings4b, echo=FALSE}
+# gas cost
+gb = subset(greenbuildings, green_rating == 1)
+ggplot(data = gb) + 
+  geom_point(mapping = aes(x = cd_total_07, y = Electricity_Costs, color = green_rating))
+```
+
+
+```{r, greenbuildings5, echo=FALSE}
+# age vs rent
+gb = greenbuildings
+gb$green_rating[gb$green_rating == 0] <- 'NOT GREEN'
+gb$green_rating[gb$green_rating == 1] <- 'GREEN'
+
+ggplot(data = gb) + 
+  geom_point(mapping = aes(x = age, y = Rent, color = green_rating))
+```
+
+```{r, greenbuildings5a, echo=FALSE}
+# age vs rent
+gb = subset(greenbuildings, green_rating == 1)
+ggplot(data = gb) + 
+  geom_point(mapping = aes(x = age, y = Rent, color = LEED))
+```
+
+```{r, greenbuildings5b, echo=FALSE}
+gb = subset(greenbuildings, green_rating == 1)
+gb$rentAboveAverage = gb$Rent - gb$cluster_rent
+
+above_summ = gb %>%
+  group_by(LEED)  %>%  # group the data points by model name
+  summarize(above.mean = mean(rentAboveAverage))  # calculate a mean for each model
+
+ggplot(above_summ, aes(x=LEED, y=above.mean)) + 
+  geom_bar(stat='identity')
+```
+
+```{r, greenbuildings5c, echo=FALSE}
+gb = greenbuildings
+gb$green_rating[gb$LEED == 1] <- 'LEED'
+gb$green_rating[gb$Energystar == 1] <- 'EnergyStar'
+gb$green_rating[gb$green_rating == 0] <- 'Normal'
+gb$rentAboveAverage = gb$Rent - gb$cluster_rent
+
+above_summ = gb %>%
+  group_by(green_rating)  %>%  # group the data points by model name
+  summarize(above.mean = mean(rentAboveAverage))  # calculate a mean for each model
+
+ggplot(above_summ, aes(x=green_rating, y=above.mean, color = green_rating)) + 
+  geom_bar(stat='identity')
+```
+
 
 ## Milk
 As shown in class, N = (P - C) * Q where N is net profit, P is price, C is cost, and Q is quantity.

@@ -48,6 +48,32 @@ old’s creatinine clearance and the predicted clearance for 40 year olds
 is much higher than the difference between the 60 year old’s creatinine
 clearance and the predicted clearance for 60 year olds.
 
+## Green Buildings:
+
+![](Exercise1_files/figure-gfm/greenbuildings-1.png)<!-- -->
+
+![](Exercise1_files/figure-gfm/greenbuildings2-1.png)<!-- -->
+
+![](Exercise1_files/figure-gfm/greenbuildings3a-1.png)<!-- -->
+
+![](Exercise1_files/figure-gfm/greenbuildings3b-1.png)<!-- -->
+
+![](Exercise1_files/figure-gfm/greenbuildings3-1.png)<!-- -->
+
+![](Exercise1_files/figure-gfm/greenbuildings3f-1.png)<!-- -->
+
+![](Exercise1_files/figure-gfm/greenbuildings4a-1.png)<!-- -->
+
+![](Exercise1_files/figure-gfm/greenbuildings4b-1.png)<!-- -->
+
+![](Exercise1_files/figure-gfm/greenbuildings5-1.png)<!-- -->
+
+![](Exercise1_files/figure-gfm/greenbuildings5a-1.png)<!-- -->
+
+![](Exercise1_files/figure-gfm/greenbuildings5b-1.png)<!-- -->
+
+![](Exercise1_files/figure-gfm/greenbuildings5c-1.png)<!-- -->
+
 ## Milk
 
 As shown in class, N = (P - C) \* Q where N is net profit, P is price, C
