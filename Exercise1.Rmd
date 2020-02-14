@@ -16,8 +16,16 @@ This is an R Markdown format used for publishing markdown documents to GitHub. W
 
 You can include R code in the document as follows:
 
-```{r cars}
-summary(cars)
+```{r ABIA, message=TRUE, warning=TRUE}
+library(tidyverse)
+ABIA = read.csv("data/ABIA.csv")
+security_summ = ABIA %>%
+  group_by(DayOfWeek)  %>%  # group the data points by model name
+  summarize(DepartureDelay.mean = mean(DepDelay, na.rm=TRUE))  # calculate a mean for each model
+
+ggplot(security_summ, aes(x=DayOfWeek, y=DepartureDelay.mean)) + 
+  geom_bar(stat='identity')
+```
 ```
 
 ## Including Plots
