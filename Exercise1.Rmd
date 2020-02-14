@@ -6,7 +6,7 @@ output: github_document
 ```{r, setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
-library(mosaic)
+#library(mosaic)
 ABIA = read.csv("data/ABIA.csv")
 creatinine = read.csv("data/creatinine.csv")
 lm1 = lm(creatclear ~ age, data = creatinine)
@@ -39,15 +39,18 @@ Scatter plot of age vs creatinine clearance rate
 plot(creatclear ~ age, data = creatinine)
 ```
 
-We found a first order polynomial to work fine, as a second order polynomial looked like a straight line.
+We found a first order polynomial to work fine, as a second order polynomial looked pretty much like a straight line. A first order regression gives us the equation:
+
+creatclear = (age * -.619) + 147.81
 ```{r, creatinine2, echo=FALSE}
 plot(creatclear ~ age, data = creatinine)
 abline(147.81, -0.619)
 ```
 
-We run the linear equation in R with x = 55 to predict the creatclear of a 55 year old.
+We run the linear equation in R with x = 55 to predict the creatclear of a 55 year old:
 ```{r, creatinine3}
 coef(lm1)[1] + 55*coef(lm1)[2]
-```
+``` 
 
+According to our linear regression, creatinine clearance decreases at a rate of .619 mL/minute per year.
 
