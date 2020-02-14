@@ -11,6 +11,7 @@ ABIA = read.csv("data/ABIA.csv")
 creatinine = read.csv("data/creatinine.csv")
 milk = read.csv("data/milk.csv")
 lm1 = lm(creatclear ~ age, data = creatinine)
+greenbuildings = read.csv("data/greenbuildings.csv")
 ```
 
 ## GitHub Documents
@@ -65,6 +66,18 @@ points(60, y=112, col='green', pch=19)
 ```
 
 The blue point represents the 40 year old, and the green point represents the 60 year old. As seen, the difference between the 40 year old's creatinine clearance and the predicted clearance for 40 year olds is much higher than the difference between the 60 year old's creatinine clearance and the predicted clearance for 60 year olds.
+
+## Green Buildings:
+
+```{r, greenbuildings, echo=FALSE}
+greenbuildings$rentAboveAverage = greenbuildingsrent - greenbuildings$cluster.rent
+above_summ = greenbuildings %>%
+  group_by(green.rating)  %>%  # group the data points by model name
+  summarize(above.mean = mean(rentAboveAverage))  # calculate a mean for each model
+
+ggplot(security_summ, aes(x=green.rating, y=above.mean)) + 
+  geom_point(stat='identity')
+```
 
 ## Milk
 As shown in class, N = (P - C) * Q where N is net profit, P is price, C is cost, and Q is quantity.
