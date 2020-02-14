@@ -3,12 +3,13 @@ title: "Timothy Gan, Randal Donaldson"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
+```{r, setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(mosaic)
 ABIA = read.csv("data/ABIA.csv")
 creatinine = read.csv("data/creatinine.csv")
+lm1 = lm(creatclear ~ age, data = creatinine)
 ```
 
 ## GitHub Documents
@@ -19,7 +20,7 @@ This is an R Markdown format used for publishing markdown documents to GitHub. W
 
 Look at these departure delays!
 
-```{r ABIA, message=TRUE, warning=TRUE, echo=FALSE}
+```{r, ABIA, message=TRUE, warning=TRUE, echo=FALSE}
 
 security_summ = ABIA %>%
   group_by(DayOfWeek)  %>%  # group the data points by model name
@@ -32,14 +33,21 @@ ggplot(security_summ, aes(x=DayOfWeek, y=DepartureDelay.mean)) +
 
 ## Creatinine
 
-muscle poop:
+Scatter plot of age vs creatinine clearance rate
 
-```{r creatinine, echo=FALSE}
+```{r, creatinine1, echo=FALSE}
 plot(creatclear ~ age, data = creatinine)
-
-lm1 = lm(creatclear ~ age, data = creatinine)
-abline(147.81, -0.619)
-
-
 ```
+
+We found a first order polynomial to work fine, as a second order polynomial looked like a straight line.
+```{r, creatinine2, echo=FALSE}
+plot(creatclear ~ age, data = creatinine)
+abline(147.81, -0.619)
+```
+
+We run the linear equation in R with x = 55 to predict the creatclear of a 55 year old.
+```{r, creatinine3}
+coef(lm1)[1] + 55*coef(lm1)[2]
+```
+
 

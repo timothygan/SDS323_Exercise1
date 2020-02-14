@@ -15,6 +15,20 @@ Look at these departure delays\!
 
 ## Creatinine
 
-muscle poop:
+Scatter plot of age vs creatinine clearance rate
 
-![](Exercise1_files/figure-gfm/creatinine-1.png)<!-- -->
+![](Exercise1_files/figure-gfm/creatinine1-1.png)<!-- -->
+
+We found a first order polynomial to work fine, as a second order
+polynomial looked like a straight line.
+![](Exercise1_files/figure-gfm/creatinine2-1.png)<!-- -->
+
+We run the linear equation in R with x = 55 to predict the creatclear of
+a 55 year old.
+
+``` r
+coef(lm1)[1] + 55*coef(lm1)[2]
+```
+
+    ## (Intercept) 
+    ##     113.723
