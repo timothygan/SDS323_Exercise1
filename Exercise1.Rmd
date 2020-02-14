@@ -5,20 +5,22 @@ output: github_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-data(mpg)
+library(tidyverse)
+library(mosaic)
+ABIA = read.csv("data/ABIA.csv")
+creatinine = read.csv("data/creatinine.csv")
 ```
 
 ## GitHub Documents
 
 This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
 
-## Including Code
+## ABIA
 
-You can include R code in the document as follows:
+Look at these departure delays!
 
-```{r ABIA, message=TRUE, warning=TRUE}
-library(tidyverse)
-ABIA = read.csv("data/ABIA.csv")
+```{r ABIA, message=TRUE, warning=TRUE, echo=FALSE}
+
 security_summ = ABIA %>%
   group_by(DayOfWeek)  %>%  # group the data points by model name
   summarize(DepartureDelay.mean = mean(DepDelay, na.rm=TRUE))  # calculate a mean for each model
@@ -28,12 +30,16 @@ ggplot(security_summ, aes(x=DayOfWeek, y=DepartureDelay.mean)) +
 ```
 ```
 
-## Including Plots
+## Creatinine
 
-You can also embed plots, for example:
+muscle poop:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r creatinine, echo=FALSE}
+plot(creatclear ~ age, data = creatinine)
+
+lm1 = lm(creatclear ~ age, data = creatinine)
+abline(147.81, -0.619)
+
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
