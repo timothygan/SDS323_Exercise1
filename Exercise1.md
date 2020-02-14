@@ -1,4 +1,4 @@
-Exercise 1
+Timothy Gan, Randal Donaldson
 ================
 
 ## GitHub Documents
