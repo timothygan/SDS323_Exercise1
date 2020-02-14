@@ -50,33 +50,25 @@ clearance and the predicted clearance for 60 year olds.
 
 ## Green Buildings:
 
-![](Exercise1_files/figure-gfm/greenbuildings-1.png)<!-- -->
+Average diff
 
-![](Exercise1_files/figure-gfm/greenbuildings2-1.png)<!-- -->
+![](Exercise1_files/figure-gfm/diff-1.png)<!-- -->
 
-![](Exercise1_files/figure-gfm/greenbuildings3a-1.png)<!-- -->
+15 story buildings
 
-![](Exercise1_files/figure-gfm/greenbuildings3b-1.png)<!-- -->
+![](Exercise1_files/figure-gfm/diff_15_story-1.png)<!-- -->
 
-![](Exercise1_files/figure-gfm/greenbuildings3-1.png)<!-- -->
+type comparison
 
-![](Exercise1_files/figure-gfm/greenbuildings3f-1.png)<!-- -->
+![](Exercise1_files/figure-gfm/type_comparison-1.png)<!-- -->
 
-![](Exercise1_files/figure-gfm/greenbuildings4a-1.png)<!-- -->
+age vs rent
 
-![](Exercise1_files/figure-gfm/greenbuildings4b-1.png)<!-- -->
+![](Exercise1_files/figure-gfm/age_rent-1.png)<!-- -->
 
-![](Exercise1_files/figure-gfm/greenbuildings5-1.png)<!-- -->
+age + green
 
-![](Exercise1_files/figure-gfm/greenbuildings5a-1.png)<!-- -->
-
-![](Exercise1_files/figure-gfm/greenbuildings5b-1.png)<!-- -->
-
-![](Exercise1_files/figure-gfm/greenbuildings5c-1.png)<!-- -->
-
-![](Exercise1_files/figure-gfm/greenbuildings5d-1.png)<!-- -->
-
-![](Exercise1_files/figure-gfm/greenbuildings6-1.png)<!-- -->
+![](Exercise1_files/figure-gfm/age_green-1.png)<!-- -->
 
 ## Milk
 
