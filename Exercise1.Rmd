@@ -9,6 +9,7 @@ library(tidyverse)
 #library(mosaic)
 ABIA = read.csv("data/ABIA.csv")
 creatinine = read.csv("data/creatinine.csv")
+milk = read.csv("data/milk.csv")
 lm1 = lm(creatclear ~ age, data = creatinine)
 ```
 
@@ -42,12 +43,14 @@ plot(creatclear ~ age, data = creatinine)
 We found a first order polynomial to work fine, as a second order polynomial looked pretty much like a straight line. A first order regression gives us the equation:
 
 creatclear = (age * -.619) + 147.81
+
 ```{r, creatinine2, echo=FALSE}
 plot(creatclear ~ age, data = creatinine)
 abline(147.81, -0.619)
 ```
 
-We run the linear equation in R with x = 55 to predict the creatclear of a 55 year old:
+We run the linear equation in R with $x = 55$ to predict the creatclear of a 55 year old:
+
 ```{r, creatinine3}
 coef(lm1)[1] + 55*coef(lm1)[2]
 ``` 
@@ -62,3 +65,29 @@ points(60, y=112, col='green', pch=19)
 ```
 
 The blue point represents the 40 year old, and the green point represents the 60 year old. As seen, the difference between the 40 year old's creatinine clearance and the predicted clearance for 40 year olds is much higher than the difference between the 60 year old's creatinine clearance and the predicted clearance for 60 year olds.
+
+## Milk
+As shown in class, N = (P - C) * Q where N is net profit, P is price, C is cost, and Q is quantity.
+
+As for expressing Q in terms of P, we use the microeconomics equation that uses power laws to represent changes in consumer demand as a function of price: Q = KP<sup>PED</sup> where K is a constant and PED is price elasticity of demand.
+
+We can combine these equations to yield N = (P * C) * KP<sup>PED</sup>
+
+In order to solve for all the constants, we can take the log of the second equation, and use a linear regression to get those constants.
+
+```{r, milk1}
+lm2 = lm(log(sales) ~ log(price), data = milk)
+coef(lm2)
+```
+
+PED is just going to be -1.618578, but the constant K is ***e***<sup>4.720604</sup> which happens to be 112.236022757. Given that cost is 1, we can now find the optimal price for the most profit through a few different ways. One is taking the derivative of the profit equation and setting the derivative to 0. From there, we check the points where the derivative is equal to 0 and find the maximum. We could also plot it in R and eyeball it and zoom closer and closer to the maximum. R also provides a really neat function to optimize an equation given a certain domain. The third option is demonstrated below.
+
+```{r, milk2, echo=FALSE}
+cost = 1
+curve((x - cost)*112.236022757*x^(-1.618578), from=1, to=9) # 1 dollar to 9 dollars
+net <- function(x) { (x - cost)*112.236022757*x^(-1.618578)}
+optimize(net, interval=c(1, 9), maximum=TRUE)
+points(2.616605, y=38.24674, pch=19, col="blue")
+```
+
+The optimal price is $2.616605, and the max profit is $38.24674 given the cost of milk is $1. To calculate p given a certain c, just set the variable cost to whatever the cost of milk is.
