@@ -38,3 +38,11 @@ coef(lm1)[1] + 55*coef(lm1)[2]
 
 According to our linear regression, creatinine clearance decreases at a
 rate of .619 mL/minute per year.
+
+![](Exercise1_files/figure-gfm/creatinine4-1.png)<!-- -->
+
+The blue point represents the 40 year old, and the green point
+represents the 60 year old. As seen, the difference between the 40 year
+old’s creatinine clearance and the predicted clearance for 40 year olds
+is much higher than the difference between the 60 year old’s creatinine
+clearance and the predicted clearance for 60 year olds.
