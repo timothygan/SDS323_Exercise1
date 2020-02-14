@@ -74,6 +74,10 @@ clearance and the predicted clearance for 60 year olds.
 
 ![](Exercise1_files/figure-gfm/greenbuildings5c-1.png)<!-- -->
 
+![](Exercise1_files/figure-gfm/greenbuildings5d-1.png)<!-- -->
+
+![](Exercise1_files/figure-gfm/greenbuildings6-1.png)<!-- -->
+
 ## Milk
 
 As shown in class, N = (P - C) \* Q where N is net profit, P is price, C

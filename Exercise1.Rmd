@@ -184,8 +184,27 @@ above_summ = gb %>%
   group_by(green_rating)  %>%  # group the data points by model name
   summarize(above.mean = mean(rentAboveAverage))  # calculate a mean for each model
 
-ggplot(above_summ, aes(x=green_rating, y=above.mean, color = green_rating)) + 
+ggplot(above_summ, aes(x=green_rating, y=above.mean, fill = green_rating)) + 
   geom_bar(stat='identity')
+```
+
+```{r, greenbuildings5d, echo=FALSE}
+greenbuildings$green_rating[greenbuildings$green_rating == 1] <- 'Green'
+greenbuildings$green_rating[greenbuildings$green_rating == 0] <- 'Normal'
+ggplot(data=greenbuildings) + 
+  geom_boxplot(mapping=aes(x=green_rating, y=age))
+```
+
+```{r, greenbuildings6, echo=FALSE}
+gb = subset(greenbuildings, renovated == 0)
+gb$rentAboveAverage = gb$Rent - gb$cluster_rent
+age_summ = gb %>%
+  group_by(age) %>%
+    summarize(above_mean = mean(rentAboveAverage))
+ggplot(age_summ, aes(x=age, y=above_mean)) +
+  geom_point(stat='identity') + 
+  geom_smooth(method='lm', formula= y~x)
+
 ```
 
 
