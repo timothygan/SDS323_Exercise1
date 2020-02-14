@@ -1,19 +1,13 @@
 Timothy Gan, Randal Donaldson
 ================
 
-## GitHub Documents
+## ABIA:
 
-This is an R Markdown format used for publishing markdown documents to
-GitHub. When you click the **Knit** button all R code chunks are run and
-a markdown file (.md) suitable for publishing to GitHub is generated.
+What day is the best day to avoid departure delays?
 
-## ABIA
+![](Exercise1_files/figure-gfm/ABIA-1.png)<!-- -->
 
-Look at these departure delays\!
-
-![](Exercise1_files/figure-gfm/ABIA-1.png)<!-- --> \`\`\`
-
-## Creatinine
+## Creatinine:
 
 Scatter plot of age vs creatinine clearance rate
 
@@ -63,14 +57,10 @@ square foot.
 When only comparing buildings that are 15 stories the difference between
 green and non green becomes even smaller:
 
-15 story buildings
-
 ![](Exercise1_files/figure-gfm/diff_15_story-1.png)<!-- -->
 
 The guru also failed to consider the difference in the types of green
 certifications:
-
-type comparison
 
 ![](Exercise1_files/figure-gfm/type_comparison-1.png)<!-- -->
 
@@ -82,14 +72,10 @@ than non green buildings on average, and it would also stand to reason
 that newer buildings would have higher rent in general than older
 buildings regardless of green status
 
-age vs rent
-
 ![](Exercise1_files/figure-gfm/age_rent-1.png)<!-- -->
 
 Seen here, there is a slight negative correlation between age and rent
 when buildings that have seen significant renovations are removed.
-
-age + green
 
 ![](Exercise1_files/figure-gfm/age_green-1.png)<!-- -->
 
@@ -107,7 +93,7 @@ receives a LEED certification. Therefore, his overall assessment that a
 green building would be profitable long term is probably correct, but
 his method of determining this has some faults.
 
-## Milk
+## Milk:
 
 As shown in class, N = (P - C) \* Q where N is net profit, P is price, C
 is cost, and Q is quantity.
@@ -140,11 +126,24 @@ also plot it in R and eyeball it and zoom closer and closer to the
 maximum. R also provides a really neat function to optimize an equation
 given a certain domain. The third option is demonstrated below.
 
+``` r
+cost = 1
+curve((x - cost)*112.236022757*x^(-1.618578), from=1, to=9) # 1 dollar to 9 dollars
+title(main="Optimizing Milk price for profit", 
+   xlab="Price to sell milk (dollars)", ylab="Profit (dollars)")
+net <- function(x) { (x - cost)*112.236022757*x^(-1.618578)}
+optimize(net, interval=c(1, 9), maximum=TRUE)
+```
+
     ## $maximum
     ## [1] 2.616605
     ## 
     ## $objective
     ## [1] 38.24674
+
+``` r
+points(2.616605, y=38.24674, pch=19, col="blue")
+```
 
 ![](Exercise1_files/figure-gfm/milk2-1.png)<!-- -->
 
